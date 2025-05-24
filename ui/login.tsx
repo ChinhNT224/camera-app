@@ -53,7 +53,7 @@ export default function LoginScreen() {
         })
       ]).start(() => {
         // Navigate after animation completes
-        router.push('/home');
+        router.replace('/home');
       });
     }, 150);
   };
@@ -141,7 +141,7 @@ export default function LoginScreen() {
           
           <TouchableOpacity style={styles.googleButton}>
             <Image 
-              source={require('../../assets/images/google-icon.png')} 
+              source={require('../assets/images/google-icon.png')} 
               style={{width: 24, height: 24}}
             />
             <Text style={styles.socialButtonText}>Google</Text>
