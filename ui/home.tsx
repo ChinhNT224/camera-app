@@ -26,41 +26,56 @@ export default function HomeScreen() {
           </TouchableOpacity>
         </AnimatedView>
 
-        <ScrollView 
-          style={styles.scrollView} 
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{
-            paddingBottom: insets.bottom + 60 // Add bottom padding for tab bar
-          }}
-        >
-          {/* Welcome message */}
-          <AnimatedView style={styles.welcomeSection} delay={50}>
-            <Text style={styles.welcomeTitle}>How may I help you</Text>
-            <Text style={styles.welcomeTitle}>today?</Text>
+        {/* Welcome message */}
+        <AnimatedView style={styles.welcomeSection} delay={50}>
+          <Text style={styles.welcomeTitle}>How may I help you</Text>
+          <Text style={styles.welcomeTitle}>today?</Text>
+        </AnimatedView>
+
+        {/* Features section */}
+        <View style={styles.featuresSection}>
+          <AnimatedView style={styles.sectionHeader} delay={100}>
+            <Text style={styles.sectionTitle}>Features</Text>
+            <Text style={styles.sectionSubtitle}>Others</Text>
           </AnimatedView>
 
-          {/* Features section */}
-          <View style={styles.featuresSection}>
-            <AnimatedView style={styles.sectionHeader} delay={100}>
-              <Text style={styles.sectionTitle}>Features</Text>
-              <Text style={styles.sectionSubtitle}>Others</Text>
+          <View style={styles.featureCardsContainer}>
+            {/* Cameras card - takes full height on left */}
+            <AnimatedView style={styles.leftCardContainer} delay={150}>
+              <AnimatedPressable
+                style={styles.featureCard}
+                onPress={() => router.push('/box')}
+              >
+                <LinearGradient
+                  colors={['#4776E6', '#1E88E5', '#0D47A1']}
+                  style={styles.gradientBackground}
+                >
+                  <Ionicons name="camera-outline" size={32} color="white" />
+                  <View style={styles.cardTitleContainer}>
+                    <Text style={styles.featureCardTitle}>Boxs</Text>
+                  </View>
+                  <Ionicons
+                    name="arrow-forward-outline"
+                    size={20}
+                    color="white"
+                    style={styles.cardArrow}
+                  />
+                </LinearGradient>
+              </AnimatedPressable>
             </AnimatedView>
 
-            <View style={styles.featureCardsContainer}>
-              {/* Cameras card - takes full height on left */}
-              <AnimatedView style={styles.leftCardContainer} delay={150}>
+            <View style={styles.rightCardsColumn}>
+              {/* Add camera card - top right */}
+              <AnimatedView style={styles.rightCardContainer} delay={200}>
                 <AnimatedPressable
                   style={styles.featureCard}
-                  onPress={() => router.push('/camera')}
                 >
                   <LinearGradient
-                    colors={['#4776E6', '#1E88E5', '#0D47A1']}
+                    colors={['#FF9800', '#FF5722', '#E91E63']}
                     style={styles.gradientBackground}
                   >
                     <Ionicons name="camera-outline" size={32} color="white" />
-                    <View style={styles.cardTitleContainer}>
-                      <Text style={styles.featureCardTitle}>Cameras</Text>
-                    </View>
+                    <Text style={styles.featureCardTitle}>Add box</Text>
                     <Ionicons
                       name="arrow-forward-outline"
                       size={20}
@@ -71,61 +86,48 @@ export default function HomeScreen() {
                 </AnimatedPressable>
               </AnimatedView>
 
-              <View style={styles.rightCardsColumn}>
-                {/* Add camera card - top right */}
-                <AnimatedView style={styles.rightCardContainer} delay={200}>
-                  <AnimatedPressable
-                    style={styles.featureCard}
+              {/* Playback card - bottom right */}
+              <AnimatedView style={styles.rightCardContainer} delay={250}>
+                <AnimatedPressable
+                  style={styles.featureCard}
+                >
+                  <LinearGradient
+                    colors={['#00BCD4', '#26A69A', '#009688']}
+                    style={styles.gradientBackground}
                   >
-                    <LinearGradient
-                      colors={['#FF9800', '#FF5722', '#E91E63']}
-                      style={styles.gradientBackground}
-                    >
-                      <Ionicons name="camera-outline" size={32} color="white" />
-                      <Text style={styles.featureCardTitle}>Add camera</Text>
-                      <Ionicons
-                        name="arrow-forward-outline"
-                        size={20}
-                        color="white"
-                        style={styles.cardArrow}
-                      />
-                    </LinearGradient>
-                  </AnimatedPressable>
-                </AnimatedView>
-
-                {/* Playback card - bottom right */}
-                <AnimatedView style={styles.rightCardContainer} delay={250}>
-                  <AnimatedPressable
-                    style={styles.featureCard}
-                  >
-                    <LinearGradient
-                      colors={['#00BCD4', '#26A69A', '#009688']}
-                      style={styles.gradientBackground}
-                    >
-                      <Ionicons name="videocam-outline" size={32} color="white" />
-                      <Text style={styles.featureCardTitle}>Playback</Text>
-                      <Ionicons
-                        name="arrow-forward-outline"
-                        size={20}
-                        color="white"
-                        style={styles.cardArrow}
-                      />
-                    </LinearGradient>
-                  </AnimatedPressable>
-                </AnimatedView>
-              </View>
+                    <Ionicons name="videocam-outline" size={32} color="white" />
+                    <Text style={styles.featureCardTitle}>Playback</Text>
+                    <Ionicons
+                      name="arrow-forward-outline"
+                      size={20}
+                      color="white"
+                      style={styles.cardArrow}
+                    />
+                  </LinearGradient>
+                </AnimatedPressable>
+              </AnimatedView>
             </View>
           </View>
+        </View>
+        {/* Rencent notifications */}
+        <View style={{ paddingHorizontal: 16, marginTop: 30 }}>
+          <AnimatedView style={styles.sectionHeader} delay={300}>
+            <Text style={styles.sectionTitle}>Recent notifications</Text>
+            <TouchableOpacity>
+              <Text style={styles.seeAllText}>See all</Text>
+            </TouchableOpacity>
+          </AnimatedView>
+        </View>
 
+        <ScrollView 
+          style={styles.scrollView} 
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            paddingBottom: insets.bottom + 60 // Add bottom padding for tab bar
+          }}
+        >
           {/* Notifications section */}
           <View style={styles.notificationsSection}>
-            <AnimatedView style={styles.sectionHeader} delay={300}>
-              <Text style={styles.sectionTitle}>Recent notifications</Text>
-              <TouchableOpacity>
-                <Text style={styles.seeAllText}>See all</Text>
-              </TouchableOpacity>
-            </AnimatedView>
-
             {/* Warning notification */}
             <AnimatedView delay={350}>
               <AnimatedPressable style={styles.notificationCard}>
@@ -157,32 +159,6 @@ export default function HomeScreen() {
             ))}
           </View>
         </ScrollView>
-
-        {/* Bottom navigation */}
-        <AnimatedView 
-          style={{
-            ...styles.bottomNav,
-            paddingBottom: insets.bottom,
-            height: 60 + insets.bottom
-          }}
-          delay={500}
-        >
-          <TouchableOpacity style={styles.navItem}>
-            <Ionicons name="home-outline" size={24} color="#1E88E5" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.navItem}>
-            <Ionicons name="calendar-outline" size={24} color="#777" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.navItem}>
-            <Ionicons name="folder-outline" size={24} color="#777" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.navItem}>
-            <Ionicons name="heart-outline" size={24} color="#777" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.navItem}>
-            <Ionicons name="person-outline" size={24} color="#777" />
-          </TouchableOpacity>
-        </AnimatedView>
       </ThemedView>
     </SafeAreaView>
   );
@@ -302,8 +278,6 @@ const styles = StyleSheet.create({
   },
   notificationsSection: {
     paddingHorizontal: 16,
-    paddingBottom: 80, // Extra space for bottom nav
-    marginTop: 30
   },
   seeAllText: {
     color: '#1E88E5',

@@ -3,7 +3,8 @@ import { ThemedView } from '@/components/ThemedView';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useRef, useState } from 'react';
-import { Animated, Easing, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Animated, Easing, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function LoginScreen() {
   const router = useRouter();
@@ -67,7 +68,7 @@ export default function LoginScreen() {
           { scale: Animated.add(1, Animated.multiply(slideAnim, 0.1)) } // Transform using the slide value for scaling
         ]
       }}>
-        <SafeAreaView style={{height: '100%'}}>
+        <SafeAreaView edges={['top', 'left', 'right', 'bottom']}>
           {/* Logo and app name */}
           <View style={styles.logoContainer}>
             <Ionicons name="camera" size={48} color="#1E88E5" />

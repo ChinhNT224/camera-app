@@ -1,5 +1,14 @@
-import { useEffect, useRef } from 'react';
-import { Animated, ViewStyle } from 'react-native';
+import { useEffect } from 'react';
+import { ViewStyle } from 'react-native';
+import Animated, { 
+  useAnimatedStyle, 
+  useSharedValue, 
+  withDelay, 
+  withTiming,
+  withSpring,
+  FadeIn,
+  LinearTransition
+} from 'react-native-reanimated';
 
 interface AnimatedViewProps {
   children: React.ReactNode;
@@ -16,35 +25,30 @@ export default function AnimatedView({
   initialY = 20,
   duration = 300,
 }: AnimatedViewProps) {
-  const fadeAnim = useRef(new Animated.Value(0)).current;
-  const positionAnim = useRef(new Animated.Value(initialY)).current;
+  const translateY = useSharedValue(initialY);
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [{ translateY: translateY.value }],
+  }));
 
   useEffect(() => {
-    Animated.parallel([
-      Animated.timing(fadeAnim, {
-        toValue: 1,
-        duration: duration,
-        delay: delay,
-        useNativeDriver: true,
-      }),
-      Animated.timing(positionAnim, {
-        toValue: 0,
-        duration: duration,
-        delay: delay,
-        useNativeDriver: true,
+    translateY.value = withDelay(
+      delay,
+      withSpring(0, { 
+        damping: 15,
+        stiffness: 100,
       })
-    ]).start();
+    );
   }, []);
 
   return (
     <Animated.View
       style={[
         style,
-        {
-          opacity: fadeAnim,
-          transform: [{ translateY: positionAnim }]
-        }
+        animatedStyle,
       ]}
+      entering={FadeIn.delay(delay)}
+      layout={LinearTransition.springify()}
     >
       {children}
     </Animated.View>

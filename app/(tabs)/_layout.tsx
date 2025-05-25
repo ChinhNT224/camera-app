@@ -4,8 +4,12 @@ import { StyleSheet } from 'react-native';
 
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+/**
+ * 
+ * Tab layout for the app
+ */
 
-export default function AppLayout() {
+export default function TabLayout() {
   const colorScheme = useColorScheme();
   const iconColor = colorScheme === 'dark' ? Colors.dark.tabIconDefault : Colors.light.tabIconDefault;
   const selectedIconColor = colorScheme === 'dark' ? Colors.dark.tabIconSelected : Colors.light.tabIconSelected;
@@ -19,19 +23,20 @@ export default function AppLayout() {
       }}
     >
       <Tabs.Screen
-        name="/home"
+        name="home"
         options={{
           title: 'Home',
+          headerShown: false,
           tabBarIcon: ({ focused }) => (
             <Ionicons 
-              name="home-outline" 
+              name="home" 
               size={24} 
               color={focused ? selectedIconColor : iconColor} 
             />
           ),
         }}
       />
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name="calendar"
         options={{
           title: 'Calendar',
@@ -82,18 +87,18 @@ export default function AppLayout() {
             />
           ),
         }}
-      />
+      /> */}
     </Tabs>
   );
 }
 
 const styles = StyleSheet.create({
   tabBar: {
-    height: 60,
-    paddingBottom: 5,
-    paddingTop: 5,
-    backgroundColor: '#fff',
-    borderTopWidth: 1,
-    borderTopColor: '#eee',
+    // height: 60,
+    // paddingBottom: 5,
+    // paddingTop: 5,
+    backgroundColor: 'white',
+    // borderTopWidth: 1,
+    // borderTopColor: '#eee',
   },
 });
