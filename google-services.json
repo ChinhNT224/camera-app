@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "390678609917",
+    "project_id": "camera-api-ddd8d",
+    "storage_bucket": "camera-api-ddd8d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390678609917:android:73f4cae3925e22a410e394",
+        "android_client_info": {
+          "package_name": "com.bctech.smartcamera"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "390678609917-gnckcnc1sdotjvmms2mgtab88g05f36k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnb1TJCitDtzJkNXjINpC5SDASouXy0Xo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "390678609917-gnckcnc1sdotjvmms2mgtab88g05f36k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

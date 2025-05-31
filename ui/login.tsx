@@ -1,3 +1,4 @@
+import GoogleSignInButton from '@/components/GoogleSignInButton';
 import TextInput from '@/components/inputs/TextInput';
 import { ThemedView } from '@/components/ThemedView';
 import { Ionicons } from '@expo/vector-icons';
@@ -140,13 +141,7 @@ export default function LoginScreen() {
             <Text style={styles.socialButtonText}>Facebook</Text>
           </TouchableOpacity> */}
           
-          <TouchableOpacity style={styles.googleButton}>
-            <Image 
-              source={require('../assets/images/google-icon.png')} 
-              style={{width: 24, height: 24}}
-            />
-            <Text style={styles.socialButtonText}>Google</Text>
-          </TouchableOpacity>
+          <GoogleSignInButton />
           
           {/* Register link */}
           <View style={styles.registerContainer}>
